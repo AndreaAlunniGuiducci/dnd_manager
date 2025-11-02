@@ -1,0 +1,72 @@
+:global(:root) {
+	/* altezza dell'header usata anche per il padding del body */
+	--header-height: 64px;
+}
+
+/* Assicura che il contenuto della pagina non finisca sotto l'header fisso */
+:global(body) {
+	padding-top: var(--header-height);
+}
+
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: var(--header-height);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 1rem;
+	background: linear-gradient(90deg, rgba(30,41,59,0.95), rgba(15,23,42,0.95));
+	color: #fff;
+	box-shadow: 0 2px 8px rgba(2,6,23,0.25);
+	z-index: 1000;
+	backdrop-filter: blur(6px);
+}
+
+/* Nota: in header.tsx la classe è linkCOntainer (con O maiuscola) */
+.linkCOntainer {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+}
+
+.linkCOntainer a {
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: 600;
+	padding: 0.5rem 0.75rem;
+	border-radius: 6px;
+	transition: background-color 150ms ease, color 150ms ease, transform 120ms ease;
+}
+
+.linkCOntainer a:hover,
+.linkCOntainer a:focus {
+	background-color: rgba(255,255,255,0.06);
+	transform: translateY(-1px);
+}
+
+/* Responsive: su schermi piccoli le link vanno su più righe */
+@media (max-width: 600px) {
+	.header {
+		padding: 0 0.75rem;
+	}
+
+	.linkCOntainer {
+		gap: 0.5rem;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	:global(:root) {
+		--header-height: 72px; /* leggermente più alto su mobile se serve */
+	}
+}
+
+/* Utility: se preferisci non toccare il body globalmente, puoi usare .spacer
+	 subito dopo l'Header per creare lo spazio: <div className={styles.spacer} /> */
+.spacer {
+	height: var(--header-height);
+}
+

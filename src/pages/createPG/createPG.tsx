@@ -8,6 +8,7 @@ import {
   TextField,
 } from "react-aria-components";
 import { setStat } from "../../utils/setStat";
+import styles from './createPG.module.scss';
 
 export const CreatePG = () => {
   const [name, setName] = useState("");
@@ -46,7 +47,7 @@ export const CreatePG = () => {
   };
 
   return (
-    <div>
+    <div className={styles.creatPG}>
       <Form onSubmit={createCharacter}>
         <TextField value={name} onChange={setName}>
           <Label>Nome Personaggio</Label>

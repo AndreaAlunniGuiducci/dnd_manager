@@ -1,0 +1,112 @@
+.creatPG {
+  max-width: 980px;
+  margin: 1.5rem auto;
+  padding: 1.25rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  color: #e6eef8;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(2,6,23,0.45);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.creatPG form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+
+/* Nome e bottone di submit occupano tutta la larghezza */
+.creatPG form > :first-child,
+.creatPG form > button {
+  grid-column: 1 / -1;
+}
+
+/* Inputs numerici più compatti */
+.creatPG input[type="number"] {
+  max-width: 10rem;
+}
+
+/* Stile generico per label */
+.creatPG label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.95rem;
+  color: #cfe8ff;
+  font-weight: 600;
+}
+
+.creatPG input,
+.creatPG textarea {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  background: rgba(10,14,20,0.45);
+  color: inherit;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  outline: none;
+  transition: box-shadow 120ms ease, border-color 120ms ease, transform 120ms ease;
+  font-size: 0.95rem;
+}
+
+.creatPG input:focus,
+.creatPG textarea:focus {
+  border-color: rgba(59,130,246,0.9);
+  box-shadow: 0 6px 18px rgba(59,130,246,0.08);
+  transform: translateY(-1px);
+}
+
+/* Input con validazione fallita (react-aria imposta aria-invalid) */
+.creatPG input[aria-invalid="true"],
+.creatPG textarea[aria-invalid="true"] {
+  border-color: #f87171;
+  box-shadow: 0 6px 18px rgba(248,113,113,0.06);
+}
+
+/* FieldError / messaggi di errore comuni */
+.creatPG [role="alert"],
+.creatPG .fieldError,
+.creatPG .error {
+  color: #ffb4b4;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+/* Pulsante submit */
+.creatPG button {
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+  color: white;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(37,99,235,0.14);
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+
+.creatPG button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(37,99,235,0.18);
+}
+
+/* Responsive: due colonne per schermi medi/grandi */
+@media (min-width: 760px) {
+  .creatPG form {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Rendiamo il campo "Nome" e il bottone larghezza piena */
+  .creatPG form > :first-child {
+    grid-column: 1 / -1;
+  }
+
+  .creatPG input[type="number"] {
+    max-width: 8rem;
+  }
+}
+
+/* Utility: piccolo helper per raggruppare label + input se serve */
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+}
